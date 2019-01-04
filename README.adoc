@@ -35,8 +35,6 @@ WARNING: You have no reason not to use Asciidoctor.
 
 Here is an example of some R code.
 
-TODO: need to add callouts to this
-
 [source,r]
 ----
 par(mfrow=c(1, 2))  # divide graph area in 2 columns
@@ -54,6 +52,13 @@ Asciidoc has a diagramming plugin that renders either
 
 However this is not turned on within Github.
 
+@startuml
+class Car
+Driver - Car : drives >
+Car *- Wheel : have 4 >
+Car -- Person : < owns
+@enduml
+
 == Future additions
 
 * TOCs
@@ -63,4 +68,5 @@ However this is not turned on within Github.
 * Lack of includes - include vs link
 * Attributes
 * Source Code - show _rout_ output
+* Source Code - add callouts
 * Custom macros (menu, btn, kbd, and icon)
