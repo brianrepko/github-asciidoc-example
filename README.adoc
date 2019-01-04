@@ -30,3 +30,10 @@ IMPORTANT: Asciidoctor is awesome, don't forget!
 CAUTION: Don't forget to add the `...-caption` document attributes in the header of the document on GitHub.
  
 WARNING: You have no reason not to use Asciidoctor.
+
+== Source Code Rendering
+
+[source,R]
+----
+library(tidyverse)
+----
