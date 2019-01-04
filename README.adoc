@@ -59,6 +59,8 @@ Car *- Wheel : have 4 >
 Car -- Person : < owns
 @enduml
 
+image::http://www.plantuml.com/plantuml/proxy?src=https://github.com/brianrepko/github-asciidoc-example/raw/master/class-example.puml[]
+
 == Future additions
 
 * TOCs
