@@ -36,4 +36,7 @@ WARNING: You have no reason not to use Asciidoctor.
 [source,R]
 ----
 library(tidyverse)
+par(mfrow=c(1, 2))  # divide graph area in 2 columns
+boxplot(cars$speed, main="Speed", sub=paste("Outlier rows: ", boxplot.stats(cars$speed)$out))  # box plot for 'speed'
+boxplot(cars$dist, main="Distance", sub=paste("Outlier rows: ", boxplot.stats(cars$dist)$out))  # box plot for 'distance'
 ----
