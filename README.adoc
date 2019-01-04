@@ -33,10 +33,34 @@ WARNING: You have no reason not to use Asciidoctor.
 
 == Source Code Rendering
 
-[source,R]
+Here is an example of some R code.
+
+TODO: need to add callouts to this
+
+[source,r]
 ----
-library(tidyverse)
 par(mfrow=c(1, 2))  # divide graph area in 2 columns
 boxplot(cars$speed, main="Speed", sub=paste("Outlier rows: ", boxplot.stats(cars$speed)$out))  # box plot for 'speed'
 boxplot(cars$dist, main="Distance", sub=paste("Outlier rows: ", boxplot.stats(cars$dist)$out))  # box plot for 'distance'
 ----
+
+== Diagramming
+
+Asciidoc has a diagramming plugin that renders either
+
+* PlantUML
+* ditaa
+* GraphViz dot
+
+However this is not turned on within Github.
+
+== Future additions
+
+* TOCs
+* Images
+* Tables as an example of CSV/data layout
+* Footnotes
+* Lack of includes - include vs link
+* Attributes
+* Source Code - show _rout_ output
+* Custom macros (menu, btn, kbd, and icon)
