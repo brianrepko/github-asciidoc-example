@@ -52,6 +52,20 @@ Asciidoc has a diagramming plugin that renders either
 
 However this is not turned on within Github.
 
+If I was to include the following in my document:
+
+[source]
+----
+@startuml
+class Car
+Driver - Car : drives >
+Car *- Wheel : have 4 >
+Car -- Person : < owns
+@enduml
+----
+
+It renders as text.
+
 @startuml
 class Car
 Driver - Car : drives >
@@ -59,7 +73,13 @@ Car *- Wheel : have 4 >
 Car -- Person : < owns
 @enduml
 
+However, if I move that PlantUML to a seperate puml file, then I can use the PlantUML proxy server to render an included image (rendered below).
+
 image::http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/brianrepko/github-asciidoc-example/master/class-example.puml[]
+
+One advantage of the PlantUML proxy server is that is fully supports all PlantUML functions including some funky extensions used to do database diagrams.
+
+image::http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/brianrepko/github-asciidoc-example/master/database-example.puml[]
 
 == Future additions
 

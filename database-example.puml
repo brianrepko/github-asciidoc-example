@@ -1,0 +1,99 @@
+@startuml
+
+!define Table(name,desc) class name as "desc" << (T,#FFAAAA) >>
+!define primary_key(x) <b>x</b>
+!define unique(x) <color:green>x</color>
+!define denormal(x) <color:red>x</color>
+!define not_null(x) <u>x</u>
+hide methods
+hide stereotypes
+
+' primary keys better to use UUID than INTEGER
+
+Table(drug, "drug") {
+  primary_key(drug_id) INTEGER
+  not_null(primary_name) VARCHAR[4000]
+}
+
+Table(drug_name, "drug_name\n(Code, Brand, Generic)") {
+  primary_key(drug_id) INTEGER
+  not_null(name_type) INTEGER
+  not_null(name) VARCHAR[4000]
+}
+
+Table(drug_mechanisms, "drug_mechanism") {
+  primary_key(drug_id) INTEGER
+  primary_key(mechanism_id) INTEGER
+  denormal(not_null(mechanism_descr)) VARCHAR[4000]
+}
+
+Table(mechanism, "mechanism") {
+  primary_key(mechanism_id) INTEGER
+  not_null(unique(description)) VARCHAR[4000]
+}
+
+Table(drug_status, "drug_status") {
+  primary_key(drug_status_id) INTEGER
+  not_null(drug_id) INTEGER
+  not_null(condition_id) INTEGER
+  denormal(not_null(condition_desc)) VARCHAR[4000]
+  not_null(phase_id) INTEGER
+  denormal(not_null(phase_order)) INTEGER
+  denormal(not_null(phase_desc)) VARCHAR[4000]
+  not_null(active_development) BOOLEAN
+  not_null(year) INTEGER
+}
+
+Table(drug_status_org, "drug_status_org") {
+  primary_key(drug_status_id) INTEGER
+  not_null(organization_id) INTEGER
+  denormal(not_null(organization_desc)) VARCHAR[4000]
+}
+
+Table(drug_status_route, "drug_status_route") {
+  primary_key(drug_status_id) INTEGER
+  not_null(admin_route_id) INTEGER
+  denormal(not_null(admin_route_desc)) VARCHAR[4000]
+}
+
+Table(organization, "organization") {
+  primary_key(organization_id) INTEGER
+  not_null(unique(description)) VARCHAR[4000]
+}
+
+Table(condition, "condition") {
+  primary_key(condition_id) INTEGER
+  not_null(unique(description)) VARCHAR[4000]
+}
+
+Table(admin_route, "admin_route") {
+  primary_key(admin_route_id) INTEGER
+  not_null(unique(description)) VARCHAR[4000]
+}
+
+Table(phase, "phase") {
+  primary_key(phase_id) INTEGER
+  not_null(unique(sort_order)) INTEGER
+  not_null(unique(description)) VARCHAR[4000]
+}
+
+enum drug_name_types {
+CODE
+BRAND
+GENERIC
+denormal(MAIN)
+}
+
+drug --> "*" drug_name
+drug_name ..> drug_name_types
+drug --> "*" drug_mechanisms
+mechanism --> "*" drug_mechanisms
+drug --> "*" drug_status
+drug_status ..> "denormalized from" condition
+drug_status ..> "denormalized from" phase
+drug_status --> "*" drug_status_org
+drug_status --> "*" drug_status_route
+drug_status_org ..> "denormalized from" organization
+drug_status_route ..> "denormalized from" admin_route
+
+@enduml
