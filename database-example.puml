@@ -1,8 +1,8 @@
 @startuml
 
-!function Table($name,$desc)
+!procedure Table($name,$desc)
 class $name as "$desc" << (T,#FFAAAA) >>
-!endfunction
+!endprocedure
 !function $primary_key($x) return "<b>" + $x + "</b>"
 !function $unique($x) return "<color:green>" + $x + "</color>"
 !function $denormal($x) return "<color:red>" + $x + "</color>"
