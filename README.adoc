@@ -79,7 +79,7 @@ image::http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.co
 
 One advantage of the PlantUML proxy server is that is fully supports all PlantUML functions including some funky extensions used to do database diagrams.
 
-image::http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/brianrepko/github-asciidoc-example/master/database-example.puml[]
+image::http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/brianrepko/github-asciidoc-example/master/database-example.puml[]
 
 == Future additions
 
